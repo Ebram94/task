@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".news_Detials"
+    android:background="@drawable/bg">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        app:cardCornerRadius="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imDetials"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/mmm" />
+
+                <TextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="247dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="23dp"
+                    android:text="Google Go Can Now Read Content Out Loud"
+                    android:textColor="#ffffff"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="76dp"
+                android:background="#E11936">
+
+                <TextView
+                    android:id="@+id/tvDate"
+                    android:layout_width="1dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="0.4"
+                    android:gravity="center"
+                    android:text="16 Sep, 2018 "
+                    android:textColor="#fff"
+                    android:textStyle="bold" />
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="40dp"
+                    android:background="#fff"
+                    android:layout_gravity="center"/>
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="41dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/light" />
+
+                <TextView
+                    android:id="@+id/tvLikes"
+                    android:layout_width="1dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.3"
+                    android:text="likes(75)"
+                    android:textColor="#FFC900"/>
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="40dp"
+                    android:background="#fff"
+                    android:layout_gravity="center"/>
+                <ImageView
+                    android:layout_width="17dp"
+                    android:layout_height="41dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/viconpng" />
+                <TextView
+                    android:id="@+id/tvView"
+                    android:layout_width="1dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_weight="0.3"
+                    android:gravity="center"
+                    android:text="8Views"
+                    android:textColor="#fff" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvDes"
+                android:padding="10dp"
+                android:layout_margin="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:text="easier for users to digest lengthy text content on the web, and it comes in an effort to capture the next billion internet users specifically in developing countries.  The browser uses minimal cellul" />
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+    </ScrollView>
+</android.support.constraint.ConstraintLayout>

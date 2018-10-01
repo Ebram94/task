@@ -1,6 +1,7 @@
 package com.example.ebram.task;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Movie;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,6 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -29,12 +33,23 @@ public class newsAdapter extends RecyclerView.Adapter<newsAdapter.NewsViewHolder
     }
 
     @Override
-    public void onBindViewHolder(NewsViewHolder holder, int position) {
-         News n=news.get(position);
-         holder.title.setText(n.getNewsTitle());
+    public void onBindViewHolder(final NewsViewHolder holder, int position) {
+         final News n=news.get(position);
+         holder.title.setText(n.getNewsTitle()+"\n");
          holder.Date.setText(n.getPostDate());
-         holder.likes.setText(n.getLikes());
-         holder.views.setText(n.getNumofViews());
+         holder.likes.setText("Likes ("+n.getLikes()+")");
+         holder.views.setText(n.getNumofViews()+" Views");
+
+        Picasso.with(context).load(n.getImageUrl()).into(holder.image);
+         holder.itemView.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+                 Intent intent= new Intent(context,news_Detials.class);
+                 intent.putExtra("id",n.getNid());
+                 context.startActivity(intent);
+
+             }
+         });
     }
 
     @Override

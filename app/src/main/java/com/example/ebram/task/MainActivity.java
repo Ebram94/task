@@ -1,7 +1,12 @@
 package com.example.ebram.task;
 
+import android.app.ProgressDialog;
 import android.app.VoiceInteractor;
+import android.content.Context;
 import android.graphics.Movie;
+import android.net.ConnectivityManager;
+import android.net.Network;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -17,6 +22,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -41,11 +47,17 @@ public class MainActivity extends AppCompatActivity
     private newsAdapter adapter;
     private RequestQueue mRequestQueue;
     private StringRequest mStringRequest;
+    ProgressDialog dialog;
+
     public static final String url ="https://egyptinnovate.com/en/api/v01/safe/GetNews";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        dialog=new ProgressDialog(this);
+        dialog.setIndeterminate(true);
+        dialog.setCancelable(false);
+        dialog.setMessage("Loading...");
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -64,7 +76,13 @@ public class MainActivity extends AppCompatActivity
         adapter=new newsAdapter(newss,getApplicationContext());
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recyclerView.setAdapter(adapter);
-        getData();
+        if(isOnline()){
+            dialog.show();
+            getData();
+        }
+        else {
+            Toast.makeText(getApplicationContext(),"NoConnection",Toast.LENGTH_LONG).show();
+        }
 
     }
 
@@ -133,9 +151,11 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onResponse(String response) {
                 Jsonparser (response.toString());
-                Toast.makeText(getApplicationContext(),"Response :" + response.toString(), Toast.LENGTH_LONG).show();//display the response on screen
+                dialog.dismiss();
+                //Toast.makeText(getApplicationContext(),"Response :" + response.toString(), Toast.LENGTH_LONG).show();//display the response on screen
 
             }
+
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
@@ -163,7 +183,7 @@ public class MainActivity extends AppCompatActivity
                 c.setNid(obj_contact.getString("Nid"));
                 c.setNumofViews(obj_contact.getString("NumofViews"));
                 c.setPostDate(obj_contact.getString("PostDate"));
-                c.setPostDate(obj_contact.getString("NewsType"));
+                c.setNewsType(obj_contact.getString("NewsType"));
 
 
 
@@ -178,6 +198,12 @@ public class MainActivity extends AppCompatActivity
             e.printStackTrace();
         }
 
+    }
+    private boolean isOnline(){
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo=connectivityManager.getActiveNetworkInfo();
+
+        return networkInfo!=null && networkInfo.isConnected();
     }
 
 }

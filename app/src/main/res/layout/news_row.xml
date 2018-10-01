@@ -2,85 +2,120 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="10dp">
 
     <android.support.v7.widget.CardView
         android:id="@+id/card_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        app:cardBackgroundColor="@color/cardview_shadow_end_color"
+        android:layout_margin="3dp"
+        android:layout_marginEnd="8dp"
+        android:elevation="5dp"
+        app:cardBackgroundColor="#B3FFFFFF"
+        app:cardCornerRadius="20dp"
         app:cardElevation="0dp"
-        android:elevation="3dp"
+        app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="16dp"
-        android:layout_margin="20dp">
+        tools:layout_editor_absoluteY="18dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imNew"
-                android:layout_width="88dp"
-                android:layout_height="match_parent"
+                android:layout_width="77dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
                 android:src="@drawable/cloud" />
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="129dp"
-                android:orientation="vertical">
+            </LinearLayout>
 
+<android.support.constraint.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/tvTitle"
-                    android:layout_width="194dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignTop="@+id/imVideo"
-                    android:text="Codeaku Discusses Latest AI Developments in its First Event" />
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="186dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Codeaku Discusses Latest AI Developments in its First Event"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tvDate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageView
-                    android:id="@+id/imVideo"
-                    android:layout_width="58dp"
-                    android:layout_height="45dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginTop="12dp"
-                    android:src="@drawable/video_logo" />
+    <ImageView
+        android:id="@+id/imVideo"
+        android:layout_width="57dp"
+        android:layout_height="34dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="4dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="28dp"
+        android:src="@drawable/video_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvTitle"
+        app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/tvDate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginBottom="20dp"
-                    android:text="16 Sep, 2018 " />
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginTop="8dp"
+        android:text="16 Sep, 2018 "
+        android:textColor="#e65f74"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tvLikes"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 
-                <TextView
-                    android:id="@+id/tvLikes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginBottom="20dp"
-                    android:layout_marginStart="102dp"
-                    android:text="likes(75)" />
+    <TextView
+        android:id="@+id/tvLikes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/tvDate"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="21dp"
+        android:text="likes(75)"
+        android:textColor="#e65f74"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvDate" />
 
-                <TextView
-                    android:id="@+id/tvView"
-                    android:layout_width="57dp"
-                    android:layout_height="wrap_content"
+    <TextView
+        android:id="@+id/tvView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
 
-                    android:layout_alignBottom="@+id/tvLikes"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="24dp"
-                    android:text="8Views" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/tvDate"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="32dp"
+        android:text="8Views"
+        android:textColor="#e65f74"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvLikes" />
 
+</android.support.constraint.ConstraintLayout>
+            </LinearLayout>
 
-            </RelativeLayout>
-        </LinearLayout>
 
     </android.support.v7.widget.CardView>
 
